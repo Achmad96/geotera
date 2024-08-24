@@ -1,70 +1,86 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import Octicons from "@expo/vector-icons/Octicons";
+import FeatureCard from "@/components/FeatureCard";
+import Entypo from "@expo/vector-icons/Entypo";
+import Container from "@/components/Container";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, Text } from "react-native";
 
-export default function HomeScreen() {
+const Home = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+    <Container className="bg-base-100 px-7 pb-20 pt-32">
+      {/* Header Section */}
+      <View className="flex w-full flex-row items-start justify-between">
+        <View className="mb-5">
+          <Text className="text-2xl font-bold text-neutral">Hello Achmad</Text>
+          <Text className="text-lg text-neutral">Welcome Back!</Text>
+        </View>
+        <Ionicons name="settings-outline" size={25} className="text-neutral" />
+      </View>
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+      {/* Stats Section */}
+      <View className="flex-row flex-wrap justify-between gap-3">
+        <FeatureCard
+          icon={<MaterialIcons name="factory" size={25} />}
+          title="Geo-Carbon"
+        />
+        <FeatureCard
+          icon={<Octicons name="trash" size={25} />}
+          title="Geo-Waste"
+        />
+        <FeatureCard
+          icon={<Entypo name="newsletter" size={25} />}
+          title="Geo-Campaign"
+        />
+        <FeatureCard
+          icon={<Entypo name="newsletter" size={25} />}
+          title="Geo-Campaign"
+        />
+      </View>
+
+      {/* Revenue Section */}
+      <View className="my-5">
+        <View className="mb-7 items-center rounded-2xl bg-accent p-7">
+          <Text className="text-3xl font-bold text-neutral">$432190</Text>
+          <Text className="text-base text-neutral">
+            + $150,102 since last week
+          </Text>
+        </View>
+
+        {/* Circular Progress */}
+        <View className="relative items-center justify-center">
+          <View className="absolute">
+            <Text className="text-2xl font-bold text-neutral">45%</Text>
+          </View>
+          <View className="h-[150px] w-[150px] rounded-full border-8 border-accent" />
+        </View>
+      </View>
+
+      {/* Bottom Stats */}
+      <View className="mt-5 rounded-2xl bg-base-200 p-5">
+        <Text className="mb-2 text-base text-neutral">
+          Sales since last week
+        </Text>
+        <Text className="mb-3 text-2xl font-bold text-neutral">230K</Text>
+
+        <Text className="mb-2 text-base text-neutral">
+          Customers since last week
+        </Text>
+        <Text className="mb-3 text-2xl font-bold text-neutral">8.549K</Text>
+
+        <Text className="mb-2 text-base text-neutral">
+          Products since last week
+        </Text>
+        <Text className="mb-3 text-2xl font-bold text-neutral">1.423K</Text>
+
+        <Text className="mb-2 text-base text-neutral">
+          Revenue since last week
+        </Text>
+        <Text className="mb-3 text-2xl font-bold text-neutral">$9745</Text>
+      </View>
+    </Container>
+  );
+};
+export default Home;
